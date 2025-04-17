@@ -20,3 +20,15 @@ hashmap.c:41:11: note: previous definition of 'createMap' was here
  HashMap * createMap(long capacity){
            ^~~~~~~~~
 a791cef
+ju., 17 de abr. de 2025 19:37:39: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c:88:11: error: redefinition of 'createMap'
+ HashMap * createMap(long capacity) {
+           ^~~~~~~~~
+hashmap.c:41:11: note: previous definition of 'createMap' was here
+ HashMap * createMap(long capacity){
+           ^~~~~~~~~
+2c4dc86
