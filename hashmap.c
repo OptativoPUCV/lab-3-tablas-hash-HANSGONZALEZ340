@@ -38,7 +38,38 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-HashMap * createMap(long capacity){
+
+
+void insertMap(HashMap * map, char * key, void * value) 
+{
+    long pos = hash(key, map->capacity);
+    Pair *actual_pos = map->buckets[pos];
+    while(actual_pos != NULL)
+    {
+        pos = (pos+1) % map->capacity;
+        actual_pos = map->buckets[pos];
+    }
+    if (map->buckets[pos] == NULL)
+    {
+        map->buckets[pos] = createPair(strdup(key), value);
+    }
+    else
+    {
+        map->buckets[pos]->key = strdup(key);
+        map->buckets[pos]->value = value;
+    }
+
+    map->size++;
+}
+
+void enlarge(HashMap * map) {
+    enlarge_called = 1; //no borrar (testing purposes)
+
+
+}
+
+
+HashMap * createMap(long capacity) {
     HashMap *map = malloc(sizeof(HashMap));
     if (map == NULL) exit(EXIT_FAILURE);
 
@@ -53,41 +84,6 @@ HashMap * createMap(long capacity){
     map->capacity = capacity;
     map->current = -1;
     return map;
-}
-
-void insertMap(HashMap * map, char * key, void * value) 
-{
-    if (searchMap(map, key) != NULL) return;
-
-    //se calcula la posicion inicial
-    long pos = hash(key, map->capacity);
-    //se aplica sondeo lineal hasta encontrar una posicion vacia
-    while (map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
-    {
-        pos = (pos + 1) % map->capacity;
-    }
-    //si el espacio esta completamente vacio, se crea un nuevo par
-    if (map->buckets[pos] == NULL)
-    {
-        map->buckets[pos] = createPair(strdup(key), value); //se duplica
-    } 
-    else{ //si ya hay espacio sin clave(clave borrada), se reutiliza
-        map->buckets[pos]->key = strdup(key);
-        map->buckets[pos]->value = value;
-    }
-    map->size++;
-}
-
-void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
-
-
-}
-
-
-HashMap * createMap(long capacity) {
-
-    return NULL;
 }
 
 void eraseMap(HashMap * map,  char * key) {    

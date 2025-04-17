@@ -32,3 +32,9 @@ hashmap.c:41:11: note: previous definition of 'createMap' was here
  HashMap * createMap(long capacity){
            ^~~~~~~~~
 2c4dc86
+ju., 17 de abr. de 2025 19:45:19: 
+ hashmap.c | 41 ++++++++++++++++++-----------------------
+ 1 file changed, 18 insertions(+), 23 deletions(-)
+ tests:  5|4
+total_score: 30/70
+a57490b
