@@ -39,9 +39,25 @@ int is_equal(void* key1, void* key2){
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) {
+void insertMap(HashMap * map, char * key, void * value) 
+{
+    if (searchMap(map, key) != NULL) return;
 
-
+    //se calcula la posicion inicial
+    long pos = hash(key, map->capacity);
+    //se aplica sondeo lineal hasta encontrar una posicion vacia
+    while (map->buckets[pos] != NULL && map->buckets[pos]->key != NULL)
+    {
+        pos = (pos + 1) % map->capacity;
+    }
+    //si el espacio esta completamente vacio, se crea un nuevo par
+    if (map->buckets[pos] == NULL)
+    {
+        map->buckets[pos] = createPair(strdup(key), value); //se duplica
+    } else{ //si ya hay espacio sin clave(clave borrada), se reutiliza
+        map->buckets[pos]->key = strdup(key);
+        map->buckets[pos]->value = value;
+    }
 }
 
 void enlarge(HashMap * map) {
