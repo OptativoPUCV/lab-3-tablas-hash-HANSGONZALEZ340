@@ -8,3 +8,15 @@ ju., 17 de abr. de 2025 16:56:19:
  tests:  0|6
 total_score: 0/70
 0e1e404
+ju., 17 de abr. de 2025 19:36:05: 
+ hashmap.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c:88:11: error: redefinition of 'createMap'
+ HashMap * createMap(long capacity) {
+           ^~~~~~~~~
+hashmap.c:41:11: note: previous definition of 'createMap' was here
+ HashMap * createMap(long capacity){
+           ^~~~~~~~~
+a791cef
