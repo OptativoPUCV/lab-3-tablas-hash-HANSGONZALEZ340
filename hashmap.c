@@ -104,8 +104,24 @@ HashMap * createMap(long capacity) {
     return map;
 }
 
-void eraseMap(HashMap * map,  char * key) {    
+void eraseMap(HashMap * map,  char * key) 
+{    
+    long pos = hash(key, map->capacity);
+    Pair *pair = map->buckets[pos];
 
+    while(pair != NULL)
+    {
+        if (pair->key != NULL && is_equal(pair->key, key))
+        {
+            pair->key = NULL;
+
+            map->size--;
+            return;
+        }
+
+        pos = (pos+1) % map->capacity;
+        pair = map->buckets[pos];
+    }
 
 }
 
