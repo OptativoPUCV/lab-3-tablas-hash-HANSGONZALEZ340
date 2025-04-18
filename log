@@ -68,3 +68,9 @@ hashmap.c:128:8: note: declared here
         ^~~~~~~~~
 cc1.exe: all warnings being treated as errors
 f1ec339
+vi., 18 de abr. de 2025  0:34:21: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  12|1
+total_score: 60/70
+5829261

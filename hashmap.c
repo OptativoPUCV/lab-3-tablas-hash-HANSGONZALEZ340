@@ -136,8 +136,8 @@ Pair * searchMap(HashMap * map,  char * key)
         if (pair->key != NULL && is_equal(pair->key, key))
         {
             map->current = pos;
-            
-            return;
+
+            return pair;
         }
 
         pos = (pos+1) % map->capacity;
